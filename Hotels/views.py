@@ -27,8 +27,20 @@ from rest_framework.reverse import reverse
 def hotelpage(request):
     form_class=HotelForm
     content={'forms':form_class}
-    return render(request,'hotel.html',content)
+    return render(request,'hotel/hotel.html',content)
     
+def add_hotel(request):
+    return render(request,'hotel/addNew.html')
+
+def add_hotel_room_attr(request):
+    return render(request,'hotel/roomAttr.html')
+
+
+
+def add_hotel_attribute(request):
+    return render(request,'hotel/attribute.html')
+    
+
 @api_view(['GET'])
 @permission_classes({AllowAny})
 @csrf_exempt

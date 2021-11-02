@@ -112,7 +112,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'hotel_page' %}" class="nav-link">
+              <a href="{% url 'addname' %}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Add Hotel</p>
               </a>
@@ -124,7 +124,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'hotel_page' %}" class="nav-link">
+              <a href="{% url 'addattr' %}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Attribute</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'addRooAttr' %}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Book Room</p>
               </a>
@@ -142,12 +148,7 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="{% url 'trip_home' %}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Atrributes</p>
-              </a>
-            </li>
+           
             <li class="nav-item">
               <a href="{% url 'trip_home' %}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
@@ -155,25 +156,31 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'trip_home' %}" class="nav-link">
+              <a href="{% url 'categories_trip' %}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Catgories</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'trip_home' %}" class="nav-link">
+              <a href="{% url 'trip_add' %}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Add Tour</p>
               </a>
             </li>
+             <li class="nav-item">
+              <a href="{% url 'attr_trip' %}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Atrributes</p>
+              </a>
+            </li>
             <li class="nav-item">
-              <a href="{% url 'trip_home' %}" class="nav-link">
+              <a href="{% url 'trip_availbility' %}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Avaibility</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'trip_home' %}" class="nav-link">
+              <a href="{% url 'trip_recovery' %}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Recovery</p>
               </a>

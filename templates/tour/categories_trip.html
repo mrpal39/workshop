@@ -1,0 +1,143 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+
+
+<div class="main-content">
+    <nav class="main-breadcrumb" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Dashboard</a></li>
+    <li class="breadcrumb-item ">
+    <a href="#/module/tour">Tour</a>
+    </li>
+    <li class="breadcrumb-item active">
+    Category
+    </li>
+    </ol>
+    </nav>
+    <div class="container-fluid">
+    <div class="d-flex justify-content-between mb20">
+    <h1 class="title-bar">Tour Categories</h1>
+    </div>
+    <div class="row">
+    <div class="col-md-4 mb40">
+    <div class="panel">
+    <div class="panel-title">Add Category</div>
+    <div class="panel-body">
+    <form action="#/module/tour/category/store/-1" method="post">
+    <input type="hidden" name="_token" value="s3KHkToMYm9j4oZ3Lq9dySm9otNLUTrbxsA5Iu5B"> <div class="form-group">
+    <label>Name</label>
+    <input type="text" value="" placeholder="Category name" name="name" class="form-control">
+    </div>
+    <div class="form-group">
+    <label>Parent</label>
+    <select name="parent_id" class="form-control">
+    <option value="">-- Please Select --</option>
+    <option value="1"> City trips</option><option value="2"> Ecotourism</option><option value="3"> Escorted tour</option><option value="4"> Ligula</option> </select>
+    </div>
+    <div class="">
+    <button class="btn btn-primary" type="submit">Add new</button>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-8">
+    <div class="filter-div d-flex justify-content-between ">
+    <div class="col-left">
+    <form method="post" action="#/module/tour/category/bulkEdit" class="filter-form filter-form-left d-flex justify-content-start">
+    <input type="hidden" name="_token" value="s3KHkToMYm9j4oZ3Lq9dySm9otNLUTrbxsA5Iu5B">
+    <select name="action" class="form-control">
+    <option value=""> Bulk Action </option>
+    <option value="publish"> Publish </option>
+    <option value="draft"> Move to Draft </option>
+    <option value="delete"> Delete </option>
+    </select>
+    <button data-confirm="Do you want to delete?" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">Apply</button>
+    </form>
+    </div>
+    <div class="col-left">
+    <form method="get" action="#/module/tour/category " class="filter-form filter-form-right d-flex justify-content-end" role="search">
+    <input type="text" name="s" value="" class="form-control" placeholder="Search by name">
+    <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">Search</button>
+     </form>
+    </div>
+    </div>
+    <div class="panel">
+    <div class="panel-body">
+    <form class="bravo-form-item">
+    <table class="table table-hover">
+    <thead>
+    <tr>
+    <th width="60px"><input type="checkbox" class="check-all"></th>
+    <th>Name</th>
+    <th class="slug d-none d-md-block">Slug</th>
+    <th class="status">Status</th>
+    <th class="date d-none d-md-block">Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><input type="checkbox" name="ids[]" value="1" class="check-item">
+    </td><td class="title">
+    <a href="#/module/tour/category/edit/1"> City trips</a>
+    </td>
+    <td class="d-none d-md-block">city-trips</td>
+    <td><span class="badge badge-publish">publish</span></td>
+    <td class="d-none d-md-block">11/02/2021</td>
+    </tr>
+    <tr>
+    <td><input type="checkbox" name="ids[]" value="2" class="check-item">
+    </td><td class="title">
+    <a href="#/module/tour/category/edit/2"> Ecotourism</a>
+    </td>
+    <td class="d-none d-md-block">ecotourism</td>
+    <td><span class="badge badge-publish">publish</span></td>
+    <td class="d-none d-md-block">11/02/2021</td>
+    </tr>
+    <tr>
+    <td><input type="checkbox" name="ids[]" value="3" class="check-item">
+    </td><td class="title">
+    <a href="#/module/tour/category/edit/3"> Escorted tour</a>
+    </td>
+    <td class="d-none d-md-block">escorted-tour</td>
+    <td><span class="badge badge-publish">publish</span></td>
+    <td class="d-none d-md-block">11/02/2021</td>
+    </tr>
+    <tr>
+    <td><input type="checkbox" name="ids[]" value="4" class="check-item">
+    </td><td class="title">
+    <a href="#/module/tour/category/edit/4"> Ligula</a>
+    </td>
+    <td class="d-none d-md-block">ligula</td>
+    <td><span class="badge badge-publish">publish</span></td>
+    <td class="d-none d-md-block">11/02/2021</td>
+    </tr>
+    </tbody>
+    </table>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+     </div>
+    <footer class="main-footer">
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-md-6 copy-right">
+    2021 © Booking Core by <a href="https://www.bookingcore.org" target="_blank">BookingCore Team</a>
+    </div>
+    <div class="col-md-6">
+    <div class="text-md-right footer-links d-none d-sm-block">
+    <a href="https://www.bookingcore.org" target="_blank">About Us</a>
+    <a href="https://m.me/bookingcore" target="_blank">Contact Us</a>
+    </div>
+    </div>
+    </div>
+    </div>
+    </footer>
+    </div>
+
+
+{% endblock content %}

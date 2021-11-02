@@ -10,6 +10,28 @@ from rest_framework.permissions import AllowAny
 from rest_framework.decorators import api_view,permission_classes
 from django.views.decorators.csrf import csrf_exempt
 
+def trip_home(request):
+    return render(request,'tour/alltrip.html')
+
+def add_trip(request):
+    return render(request,'tour/add_trip.html')
+
+
+def categories_trip(request):
+    return render(request,'tour/categories_trip.html')
+
+
+def attr_trip(request):
+    return render(request,'tour/attr_trip.html')
+
+def trip_availbility(request):
+    return render(request,'tour/trip_availbility.html')
+def trip_recovery(request):
+    return render(request,'tour/trip_recovery.html')
+
+
+
+
 
 class LocationView(generics.ListCreateAPIView):
     queryset=Location.objects.all()
@@ -36,5 +58,3 @@ def locations_list(request):
     return Response(serializer)
 
 
-def trip_home(request):
-    return render(request,'trip.html')
