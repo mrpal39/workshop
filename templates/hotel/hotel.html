@@ -5,420 +5,121 @@
 
 <div class="container-fluid">
     <div class="d-flex justify-content-between mb20">
-    <h1 class="title-bar">All Hotels</h1>
-    <div class="title-actions">
-    <a href="#create" class="btn btn-primary">Add new hotel</a>
-    </div>
+        <h1 class="title-bar">All Hotels</h1>
+        <div class="title-actions">
+            <a href="{% url 'addname'%}" class="btn btn-primary">Add new hotel</a>
+        </div>
     </div>
     <div class="filter-div d-flex justify-content-between ">
-    <div class="col-left">
-    <form method="post" action="#bulkEdit" class="filter-form filter-form-left d-flex justify-content-start">
-    <input type="hidden" name="_token" value="s3KHkToMYm9j4oZ3Lq9dySm9otNLUTrbxsA5Iu5B">
-    <select name="action" class="form-control">
-    <option value=""> Bulk Actions </option>
-    <option value="publish"> Publish </option>
-    <option value="draft"> Move to Draft </option>
-    <option value="pending">Move to Pending</option>
-    <option value="delete"> Delete </option>
-    </select>
-    <button data-confirm="Do you want to delete?" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">Apply</button>
-    </form>
+        <div class="col-left">
+            <form method="post" action="#bulkEdit" class="filter-form filter-form-left d-flex justify-content-start">
+                <input type="hidden" name="_token" value="s3KHkToMYm9j4oZ3Lq9dySm9otNLUTrbxsA5Iu5B">
+                <select name="action" class="form-control">
+                    <option value=""> Bulk Actions </option>
+                    <option value="publish"> Publish </option>
+                    <option value="draft"> Move to Draft </option>
+                    <option value="pending">Move to Pending</option>
+                    <option value="delete"> Delete </option>
+                </select>
+                <button data-confirm="Do you want to delete?" class="btn-info btn btn-icon dungdt-apply-form-btn"
+                    type="button">Apply</button>
+            </form>
+        </div>
+        <div class="col-left">
+            <form method="get" action="#/hotel "
+                class="filter-form filter-form-right d-flex justify-content-end flex-column flex-sm-row" role="search">
+                <select id="select_vendor_id" class="form-control dungdt-select2-field select2-hidden-accessible"
+                    data-options="{&quot;ajax&quot;:{&quot;url&quot;:&quot;https:\/\/sandbox.bookingcore.org\/admin\/module\/user\/getForSelect2&quot;,&quot;dataType&quot;:&quot;json&quot;,&quot;data&quot;:{&quot;user_type&quot;:&quot;vendor&quot;}},&quot;allowClear&quot;:true,&quot;placeholder&quot;:&quot;-- Vendor --&quot;}"
+                    name="vendor_id" data-select2-id="select_vendor_id" tabindex="-1" aria-hidden="true">
+                </select><span class="select2 select2-container select2-container--default" dir="ltr"
+                    data-select2-id="1" style="width: 200px;"><span class="selection"><span
+                            class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true"
+                            aria-expanded="false" tabindex="0"
+                            aria-labelledby="select2-select_vendor_id-container"><span
+                                class="select2-selection__rendered" id="select2-select_vendor_id-container"
+                                role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">--
+                                    Vendor --</span></span><span class="select2-selection__arrow" role="presentation"><b
+                                    role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+                        aria-hidden="true"></span></span>
+                <input type="text" name="s" value="" placeholder="Search by name" class="form-control">
+                <button class="btn-info btn btn-icon btn_search" type="submit">Search</button>
+            </form>
+        </div>
     </div>
-    <div class="col-left">
-    <form method="get" action="#/hotel " class="filter-form filter-form-right d-flex justify-content-end flex-column flex-sm-row" role="search">
-    <select id="select_vendor_id" class="form-control dungdt-select2-field select2-hidden-accessible" data-options="{&quot;ajax&quot;:{&quot;url&quot;:&quot;https:\/\/sandbox.bookingcore.org\/admin\/module\/user\/getForSelect2&quot;,&quot;dataType&quot;:&quot;json&quot;,&quot;data&quot;:{&quot;user_type&quot;:&quot;vendor&quot;}},&quot;allowClear&quot;:true,&quot;placeholder&quot;:&quot;-- Vendor --&quot;}" name="vendor_id" data-select2-id="select_vendor_id" tabindex="-1" aria-hidden="true">
-    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="1" style="width: 200px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-select_vendor_id-container"><span class="select2-selection__rendered" id="select2-select_vendor_id-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">-- Vendor --</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-    <input type="text" name="s" value="" placeholder="Search by name" class="form-control">
-    <button class="btn-info btn btn-icon btn_search" type="submit">Search</button>
-    </form>
-    </div>
-    </div>
+
+
     <div class="text-right">
-    <p><i>Found 12 items</i></p>
+        <p><i>Found 12 items</i></p>
     </div>
     <div class="panel">
-    <div class="panel-body">
-    <form action="" class="bravo-form-item">
-    <div class="table-responsive">
-    <table class="table table-hover">
-    <thead>
-    <tr>
-    <th width="60px"><input type="checkbox" class="check-all"></th>
-    <th> Name</th>
-    <th width="200px"> Location</th>
-    <th width="130px"> Author</th>
-    <th width="100px"> Status</th>
-    <th width="100px"> Reviews</th>
-    <th width="100px"> Date</th>
-    <th width="100px"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="publish">
-    <td><input type="checkbox" name="ids[]" class="check-item" value="12">
-    </td>
-    <td class="title">
-    <a href="#edit/12">Tes hotel</a>
-    </td>
-    <td>Los Angeles</td>
-    <td>
-    System Admin
-    </td>
-    <td><span class="badge badge-publish">publish</span></td>
-    <td>
-    <a target="_blank" href="#/review?service_id=12" class="review-count-approved">
-    0
-    </a>
-    </td>
-    <td>11/01/2021</td>
-    <td>
-    <div class="dropdown">
-    <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Action
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#edit/12">Edit hotel</a>
-    <a class="dropdown-item" href="#room/12/index">Manage Rooms</a>
-    <a class="dropdown-item" href="#12/availability">Manage Rooms Availability</a>
+        <div class="panel-body">
+            <form action="post" class="bravo-form-item">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th width="60px"><input type="checkbox" class="check-all"></th>
+                                <th> Name</th>
+                                <th width="200px"> Location</th>
+                                <th width="130px"> Author</th>
+                                <th width="100px"> Status</th>
+                                <th width="100px"> Reviews</th>
+                                <th width="100px"> Date</th>
+                                <th width="100px"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr class='publish'>
+
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
     </div>
-    </div>
-    </td>
-    </tr>
-    <tr class="publish">
-    <td><input type="checkbox" name="ids[]" class="check-item" value="11">
-    </td>
-    <td class="title">
-    <a href="#edit/11">The May Fair Hotel</a>
-    </td>
-    <td>Paris</td>
-    <td>
-    Lynne Victoria
-    </td>
-    <td><span class="badge badge-publish">publish</span></td>
-    <td>
-    <a target="_blank" href="#/review?service_id=11" class="review-count-approved">
-    3
-    </a>
-    </td>
-    <td>11/01/2021</td>
-    <td>
-    <div class="dropdown">
-    <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Action
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#edit/11">Edit hotel</a>
-    <a class="dropdown-item" href="#room/11/index">Manage Rooms</a>
-    <a class="dropdown-item" href="#11/availability">Manage Rooms Availability</a>
-    </div>
-    </div>
-    </td>
-    </tr>
-    <tr class="publish">
-    <td><input type="checkbox" name="ids[]" class="check-item" value="10">
-    </td>
-     <td class="title">
-    <a href="#edit/10">Dylan Hotel</a>
-    </td>
-    <td>New York, United States</td>
-    <td>
-    Lynne Victoria
-    </td>
-    <td><span class="badge badge-publish">publish</span></td>
-    <td>
-    <a target="_blank" href="#/review?service_id=10" class="review-count-approved">
-    2
-    </a>
-    </td>
-    <td>11/01/2021</td>
-    <td>
-    <div class="dropdown">
-    <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Action
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#edit/10">Edit hotel</a>
-    <a class="dropdown-item" href="#room/10/index">Manage Rooms</a>
-    <a class="dropdown-item" href="#10/availability">Manage Rooms Availability</a>
-    </div>
-    </div>
-    </td>
-    </tr>
-    <tr class="publish">
-    <td><input type="checkbox" name="ids[]" class="check-item" value="9">
-    </td>
-    <td class="title">
-    <a href="#edit/9">Parian Holiday Villas</a>
-    </td>
-    <td>Paris</td>
-    <td>
-    System Admin
-    </td>
-    <td><span class="badge badge-publish">publish</span></td>
-    <td>
-    <a target="_blank" href="#/review?service_id=9" class="review-count-approved">
-    2
-    </a>
-    </td>
-    <td>11/01/2021</td>
-    <td>
-    <div class="dropdown">
-    <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Action
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#edit/9">Edit hotel</a>
-     <a class="dropdown-item" href="#room/9/index">Manage Rooms</a>
-    <a class="dropdown-item" href="#9/availability">Manage Rooms Availability</a>
-    </div>
-    </div>
-    </td>
-    </tr>
-    <tr class="publish">
-    <td><input type="checkbox" name="ids[]" class="check-item" value="8">
-    </td>
-    <td class="title">
-    <a href="#edit/8">Stewart Hotel</a>
-    </td>
-    <td>Los Angeles</td>
-    <td>
-    Kaytlyn Alvapriya
-    </td>
-    <td><span class="badge badge-publish">publish</span></td>
-    <td>
-    <a target="_blank" href="#/review?service_id=8" class="review-count-approved">
-    4
-    </a>
-    </td>
-    <td>11/01/2021</td>
-    <td>
-    <div class="dropdown">
-    <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Action
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#edit/8">Edit hotel</a>
-    <a class="dropdown-item" href="#room/8/index">Manage Rooms</a>
-    <a class="dropdown-item" href="#8/availability">Manage Rooms Availability</a>
-    </div>
-    </div>
-    </td>
-    </tr>
-    <tr class="publish">
-    <td><input type="checkbox" name="ids[]" class="check-item" value="7">
-    </td>
-    <td class="title">
-    <a href="#edit/7">Crowne Plaza Hotel</a>
-    </td>
-    <td>New York, United States</td>
-    <td>
-    Lynne Victoria
-    </td>
-    <td><span class="badge badge-publish">publish</span></td>
-    <td>
-    <a target="_blank" href="#/review?service_id=7" class="review-count-approved">
-    4
-    </a>
-    </td>
-     <td>11/01/2021</td>
-    <td>
-    <div class="dropdown">
-    <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Action
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#edit/7">Edit hotel</a>
-    <a class="dropdown-item" href="#room/7/index">Manage Rooms</a>
-    <a class="dropdown-item" href="#7/availability">Manage Rooms Availability</a>
-    </div>
-    </div>
-    </td>
-    </tr>
-    <tr class="publish">
-    <td><input type="checkbox" name="ids[]" class="check-item" value="6">
-    </td>
-    <td class="title">
-    <a href="#edit/6">EnVision Hotel Boston</a>
-    </td>
-    <td>California</td>
-    <td>
-    Kaytlyn Alvapriya
-    </td>
-    <td><span class="badge badge-publish">publish</span></td>
-    <td>
-    <a target="_blank" href="#/review?service_id=6" class="review-count-approved">
-    3
-    </a>
-    </td>
-    <td>11/01/2021</td>
-    <td>
-    <div class="dropdown">
-    <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Action
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#edit/6">Edit hotel</a>
-    <a class="dropdown-item" href="#room/6/index">Manage Rooms</a>
-    <a class="dropdown-item" href="#6/availability">Manage Rooms Availability</a>
-    </div>
-    </div>
-    </td>
-    </tr>
-    <tr class="publish">
-    <td><input type="checkbox" name="ids[]" class="check-item" value="5">
-    </td>
-    <td class="title">
-    <a href="#edit/5">Studio Allston Hotel</a>
-     </td>
-    <td>Los Angeles</td>
-    <td>
-    Elise Aarohi
-    </td>
-    <td><span class="badge badge-publish">publish</span></td>
-    <td>
-    <a target="_blank" href="#/review?service_id=5" class="review-count-approved">
-    3
-    </a>
-    </td>
-    <td>11/01/2021</td>
-    <td>
-    <div class="dropdown">
-    <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Action
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#edit/5">Edit hotel</a>
-    <a class="dropdown-item" href="#room/5/index">Manage Rooms</a>
-    <a class="dropdown-item" href="#5/availability">Manage Rooms Availability</a>
-    </div>
-    </div>
-    </td>
-    </tr>
-    <tr class="publish">
-    <td><input type="checkbox" name="ids[]" class="check-item" value="4">
-    </td>
-    <td class="title">
-    <a href="#edit/4">Redac Gateway Hotel</a>
-    </td>
-    <td>Paris</td>
-    <td>
-    System Admin
-    </td>
-    <td><span class="badge badge-publish">publish</span></td>
-    <td>
-    <a target="_blank" href="#/review?service_id=4" class="review-count-approved">
-    3
-    </a>
-    </td>
-    <td>11/01/2021</td>
-    <td>
-    <div class="dropdown">
-    <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Action
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#edit/4">Edit hotel</a>
-    <a class="dropdown-item" href="#room/4/index">Manage Rooms</a>
-    <a class="dropdown-item" href="#4/availability">Manage Rooms Availability</a>
-    </div>
-    </div>
-    </td>
-    </tr>
-    <tr class="publish">
-    <td><input type="checkbox" name="ids[]" class="check-item" value="3">
-    </td>
-    <td class="title">
-    <a href="#edit/3">Castello Casole Hotel</a>
-    </td>
-    <td>Paris</td>
-    <td>
-    System Admin
-    </td>
-    <td><span class="badge badge-publish">publish</span></td>
-    <td>
-    <a target="_blank" href="#/review?service_id=3" class="review-count-approved">
-    1
-    </a>
-    </td>
-    <td>11/01/2021</td>
-    <td>
-    <div class="dropdown">
-    <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Action
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#edit/3">Edit hotel</a>
-    <a class="dropdown-item" href="#room/3/index">Manage Rooms</a>
-    <a class="dropdown-item" href="#3/availability">Manage Rooms Availability</a>
-    </div>
-    </div>
-    </td>
-    </tr>
-    <tr class="publish">
-    <td><input type="checkbox" name="ids[]" class="check-item" value="2">
-    </td>
-    <td class="title">
-    <a href="#edit/2">Hotel WBF Hommachi</a>
-    </td>
-    <td>Paris</td>
-    <td>
-    System Admin
-    </td>
-    <td><span class="badge badge-publish">publish</span></td>
-    <td>
-    <a target="_blank" href="#/review?service_id=2" class="review-count-approved">
-    3
-    </a>
-    </td>
-    <td>11/01/2021</td>
-    <td>
-    <div class="dropdown">
-    <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Action
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#edit/2">Edit hotel</a>
-    <a class="dropdown-item" href="#room/2/index">Manage Rooms</a>
-    <a class="dropdown-item" href="#2/availability">Manage Rooms Availability</a>
-    </div>
-    </div>
-    </td>
-    </tr>
-    <tr class="publish">
-    <td><input type="checkbox" name="ids[]" class="check-item" value="1">
-    </td>
-    <td class="title">
-    <a href="#edit/1">Hotel Stanford</a>
-    </td>
-    <td>Paris</td>
-    <td>
-    System Admin
-    </td>
-    <td><span class="badge badge-publish">publish</span></td>
-    <td>
-    <a target="_blank" href="#/review?service_id=1" class="review-count-approved">
-    3
-    </a>
-    </td>
-    <td>11/01/2021</td>
-    <td>
-    <div class="dropdown">
-    <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Action
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#edit/1">Edit hotel</a>
-    <a class="dropdown-item" href="#room/1/index">Manage Rooms</a>
-    <a class="dropdown-item" href="#1/availability">Manage Rooms Availability</a>
-    </div>
-    </div>
-    </td>
-    </tr>
-    </tbody>
-    </table>
-    </div>
-    </form>
-    </div>
-    </div>
-    </div>
-{% endblock  %}
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+
+
+
+
+        $.ajax({
+            type: "GET",
+            url: "http://127.0.0.1:8000/h/hotel/",
+            dataType: "json",
+            success: function (response) {
+                if (response) {
+
+                    items = []
+                    for (let index = 0; index < response.length; index++) {
+                        const element = response[index];
+
+                        console.log(element.id)
+                        items += "<tr class='publish'><td><input type='checkbox' name='ids["+element.id+"]' class='check-item' value="+element.id+"></td><td class='title'>" + element.name + "</tb><td class='title'>" + element.name + "</tb><td class='title'>" + element.Content + "</tb><td class='title'>" + element.name + "</tb><td class='title'>" + element.name + "</tb><td class='title'>" + element.name + "</tb><td><div class='dropdown'><button class='btn btn-sm btn-info dropdown-toggle' type='button'id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Action</button><div class='dropdown-menu' aria-labelledby='dropdownMenuButton'><a class='dropdown-item' href='#edit/12'>Edit hotel</a><a class='dropdown-item' href='#room/12/index'>Manage Rooms</a><a class='dropdown-item' href='#12/availability'>Manage Rooms Availability</a></div></div></td></tr>"
+
+
+                    }
+                    $("tbody").append(items);
+
+                }
+                else {
+                    alert("noting response")
+                }
+
+
+            }
+        });
+
+
+
+    });
+</script>
+
+{% endblock %}

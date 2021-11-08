@@ -2,8 +2,8 @@ from django.core.serializers import serialize
 from django.shortcuts import render
 from rest_framework import generics
 
-from .models import Location
-from .serializers import LocationSerializers
+from .models import Location, Tour
+from .serializers import LocationSerializers, TourSerializers
 from rest_framework.response import Response
 # Create your views here.
 from rest_framework.permissions import AllowAny
@@ -30,6 +30,15 @@ def trip_recovery(request):
     return render(request,'tour/trip_recovery.html')
 
 
+
+
+
+class TourView(generics.ListCreateAPIView):
+    queryset=Tour.objects.all()
+    serializer_class=TourSerializers
+class TourDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset=Tour.objects.all()
+    serializer_class=TourSerializers
 
 
 

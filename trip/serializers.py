@@ -9,9 +9,14 @@ from rest_framework import routers, serializers, viewsets
 from django.http import HttpResponse
 from rest_framework import serializers
 
-from .models import Location
+from .models import Location, Tour
 
 
+
+class TourSerializers(serializers.ModelSerializer):
+    class Meta:
+        model=Tour
+        fields="__all__"
 class LocationSerializers(serializers.ModelSerializer):
     class Meta:
         model=Location

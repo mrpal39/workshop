@@ -1,6 +1,49 @@
 from django.db import models
+from django.urls import reverse
+
+from autoslug import AutoSlugField
+from django.utils.text import slugify
 
 # Create your models here.
+from django.utils.translation import gettext_lazy as _
+class Categories(models.Model):
+	name=models.CharField( max_length=50)
+
+	
+
+	class Meta:
+		verbose_name = _("Categories")
+		verbose_name_plural = _("Categoriess")
+
+	def __str__(self):
+		return self.name
+
+	def get_absolute_url(self):
+		return reverse("Categories_detail", kwargs={"pk": self.pk})
+
+def get_slug(instance):
+   
+    return slugify("{}".format(instance.name))
+
+class Tour(models.Model):
+	name=models.CharField( max_length=50,blank=True)
+	Statu=models.CharField( max_length=50,blank=True,default="publish")
+	slug = AutoSlugField(max_length=50, populate_from=get_slug, unique=False)
+	date=models.DateField(auto_now_add=True)
+
+	Categories=models.ManyToManyField(Categories)
+  
+
+	class Meta:
+		verbose_name = _("Tour Categories")
+		verbose_name_plural = _("Tour Categoriess")
+
+	def __str__(self):
+		return self.name
+
+	def get_absolute_url(self):
+		return reverse("TourCategoriesdetail", kwargs={"pk": self.pk})
+
 
 class Location(models.Model):
 	city = models.CharField(max_length=30)
